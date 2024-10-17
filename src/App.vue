@@ -1,11 +1,11 @@
-<script setup>
-</script>
 
 <template>
   <div class="container">
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, omnis sint inventore laudantium, alias, assumenda totam quo voluptates laboriosam facere autem beatae? Quos doloremque nisi sint exercitationem fugit. Maiores, deleniti.</p>
+    <BaseCard title="Some title" description="Some description"/>
   </div>
 </template>
 
-<style scoped>
-</style>
+<script setup>
+import { BaseCard } from '@components/shared';
+
+</script>
