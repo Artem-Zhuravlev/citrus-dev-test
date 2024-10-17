@@ -1,6 +1,5 @@
-  // tailwind.config.js
 module.exports = {
-  purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
+  content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
@@ -14,11 +13,20 @@ module.exports = {
           xl: '1280px',
           '2xl': '1536px',
         }
-      }
+      },
     },
   },
   variants: {
     extend: {},
   },
-  plugins: [],
-}
+  plugins: [
+    function ({ addUtilities, addBase }) {
+      addBase({
+        '.section': {
+          padding: '2.5rem 0',
+          textAlign: 'center',
+        },
+      });
+    },
+  ],
+};
