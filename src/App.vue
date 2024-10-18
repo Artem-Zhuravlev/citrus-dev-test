@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <KpiSection :items="kpiCards" />
-    <div style="max-height: 300px;"><LineChart :data="lineChartData"/></div>
+    <div class="grid md:grid-cols-2 gap-4"><LineChart :data="lineChartData"/></div>
   </div>
 </template>
 
