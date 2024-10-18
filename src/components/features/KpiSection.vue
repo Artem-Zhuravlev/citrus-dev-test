@@ -11,7 +11,7 @@
 
 <script setup>
 import { defineProps } from 'vue';
-import { BaseCard } from '@components/shared';
+import { BaseCard } from '@/components/shared';
 
 const props = defineProps({
   items: {
