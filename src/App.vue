@@ -38,6 +38,10 @@ const countries = computed(() => {
 	});
 });
 
+const totalSales = computed(() => {
+	return salesData.reduce((acc, item) => acc + item.quantity_sold, 0);
+});
+
 const kpiCards = reactive([
 	{ title: 'Total sales', value: 42 },
 	{ title: 'Number of orders', value: 20 },
