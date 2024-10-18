@@ -20,7 +20,7 @@ module.exports = {
     extend: {},
   },
   plugins: [
-    function ({ addUtilities, addBase }) {
+    ({ addUtilities, addBase }) => {
       addBase({
         '.section': {
           padding: '2.5rem 0',
@@ -31,7 +31,7 @@ module.exports = {
       });
 
       addUtilities({
-        '.chart-wrapper': {
+        '.cart-wrapper': {
           '@apply bg-white p-6 rounded-3xl shadow-md shadow-gray-900/5': {},
         },
       }, ['responsive']);
