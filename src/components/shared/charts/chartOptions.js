@@ -1,5 +1,10 @@
 export default {
   responsive: true,
+  plugins: {
+    legend: {
+      display: false
+    }
+  },
   elements: {
     line: {
       borderColor: '#e5e5e5',
