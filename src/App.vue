@@ -2,9 +2,9 @@
   <div class="container">
     <KpiSection :items="kpiCards" />
     <div class="section">
-			{{ selectedOption }}
       <InputSelect :options="selectOptions" v-model="selectedOption"/>
     </div>
+		{{ $t('regions.europe') }}
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
       <LineChart :data="lineChartData"/>
       <BarChart :data="lineChartData"/>
