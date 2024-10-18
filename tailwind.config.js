@@ -24,7 +24,9 @@ module.exports = {
       addBase({
         '.section': {
           padding: '2.5rem 0',
-          textAlign: 'center',
+        },
+        '.section + .section': {
+          paddingTop: '0',
         },
       });
 
