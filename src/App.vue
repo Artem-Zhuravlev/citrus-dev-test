@@ -1,14 +1,17 @@
 <template>
   <div class="container">
     <KpiSection :items="kpiCards" />
-    <div class="grid md:grid-cols-2 gap-4"><LineChart :data="lineChartData"/></div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+      <LineChart :data="lineChartData"/>
+      <BarChart :data="lineChartData"/>
+    </div>
   </div>
 </template>
 
 <script setup>
 import { reactive } from 'vue';
 import { KpiSection } from '@/components/features';
-import { LineChart } from '@/components/shared';
+import { LineChart, BarChart } from '@/components/shared';
 
 const kpiCards = reactive([
   { title: 'Total sales', value: 42 },
