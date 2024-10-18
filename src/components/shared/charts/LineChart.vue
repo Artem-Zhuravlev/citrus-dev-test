@@ -36,23 +36,27 @@ const props = defineProps({
 
 const labels = computed(() => {
 	if (props.data.length > 0) {
-		return props.data[0].list.map((chart) => chart.label);
+		return props.data.map((chart) => chart.label);
 	}
 	return [];
 });
 
-const datasets = computed(() => {
-	return props.data.map((chart) => {
-		return {
-			label: chart.label,
-			borderColor: '#06b6d4',
-			data: chart.list.map((item) => item.value),
-		};
-	});
+const data = computed(() => {
+	if (props.data.length > 0) {
+		return props.data.map((chart) => {
+			return chart.value;
+		});
+	}
+	return [];
 });
 
 const chartData = computed(() => ({
 	labels: labels.value,
-	datasets: datasets.value,
+	datasets: [
+		{
+			borderColor: '#06b6d4',
+			data: data.value,
+		},
+	],
 }));
 </script>
