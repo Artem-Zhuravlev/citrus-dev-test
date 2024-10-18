@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia';
-import { salesMockData } from '@/mocks/salesMockData';
+import { salesMockData } from '@/mocks';
+import { getMonthLabel } from '@/utils';
 import { useI18n } from 'vue-i18n';
 
 export const useSalesStore = defineStore('sales', {
@@ -32,6 +33,40 @@ export const useSalesStore = defineStore('sales', {
          ? maxItem
           : currentItem;
       }, state.data[0]).product_name;
+    },
+    chartData: (state) => {
+      const { t } = useI18n();
+      const monthSalesMap = new Map();
+      state.data.forEach(item => {
+        const monthNumber = new Date(item.published_at).getMonth() + 1;
+        const totalPrice = item.price * item.quantity_sold;
+
+        if (monthSalesMap.has(monthNumber)) {
+          monthSalesMap.set(monthNumber, monthSalesMap.get(monthNumber) + totalPrice);
+        } else {
+          monthSalesMap.set(monthNumber, totalPrice);
+        }
+      });
+
+      return Array.from(monthSalesMap, ([monthNumber, value]) => {
+        return {
+          value,
+          label: t(`month.${getMonthLabel(monthNumber)}`),
+        };
+      });
+    },
+    tableData: (state) => {
+      const { t } = useI18n();
+      return state.data.map(
+        ({ id, product_name, price, quantity_sold, region }) => {
+          return {
+            id,
+            product_name,
+            total_price: price * quantity_sold,
+            region: t(`regions.${region}`),
+          };
+        },
+      )
     }
   }
 });
