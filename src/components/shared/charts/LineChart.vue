@@ -16,7 +16,6 @@ import {
   LineElement,
   Title,
   Tooltip,
-  Legend
 } from 'chart.js'
 import { Line } from 'vue-chartjs'
 
@@ -27,7 +26,6 @@ ChartJS.register(
   LineElement,
   Title,
   Tooltip,
-  Legend
 );
 
 const props = defineProps({
@@ -48,7 +46,7 @@ const datasets = computed(() => {
   return props.data.map(chart => {
     return {
       label: chart.label,
-      backgroundColor: generateRandomColor(),
+      borderColor: '#06b6d4',
       data: chart.list.map(item => item.value),
     }
   });
@@ -62,7 +60,33 @@ const chartData = computed(() => ({
 const options = reactive({
   responsive: true,
   maintainAspectRatio: false,
-})
+  elements: {
+    line: {
+      borderColor: '#e5e5e5',
+      backgroundColor: 'transparent',
+    },
+    point: {
+      backgroundColor: 'transparent',
+    },
+  },
+  scales: {
+    x: {
+      grid: {
+        color: '#e5e5e5',
+        drawBorder: true,
+        borderDash: [2, 2],
+      }
+    },
+    y: {
+      grid: {
+        color: '#e5e5e5',
+        drawBorder: true,
+        borderDash: [2, 2],
+      }
+    }
+  }
+});
+
 </script>
 
 <style>
