@@ -14,15 +14,11 @@ const props = defineProps({
 
 <style>
 .card {
-  @apply bg-white p-6 rounded-3xl shadow-md shadow-gray-900/5;
+  @apply bg-white p-6 rounded-3xl shadow-md shadow-gray-900/5 text-center;
 }
 .card-title {
   @apply mt-4 mb-4 text-xl font-semibold leading-6;
 }
-.card-button {
-  @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4;
-}
-
 .card-description {
   @apply text-3xl text-cyan-500;
 }
