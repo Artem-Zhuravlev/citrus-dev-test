@@ -3,8 +3,9 @@
     <KpiSection :items="kpiCards" />
     <div class="section">
       <InputSelect :options="selectOptions" v-model="selectedOption"/>
+      <InputSelect :options="countries" v-model="selectedOption"/>
     </div>
-		{{ $t('regions.europe') }}
+		{{ totalSales }} {{  numberOfOrders }}
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
       <LineChart :data="lineChartData"/>
       <BarChart :data="lineChartData"/>
@@ -16,10 +17,26 @@
 </template>
 
 <script setup>
-import { reactive, ref } from 'vue';
+import { computed, reactive, ref } from 'vue';
 import { KpiSection } from '@/components/features';
 import { LineChart, BarChart, TableBase } from '@/components/shared';
 import { InputSelect } from '@/components/shared';
+import { salesMockData } from '@/mocks';
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
+const salesData = reactive(salesMockData);
+
+const countries = computed(() => {
+	const uniqueRegions = new Set(salesData.map((item) => item.region));
+
+	return Array.from(uniqueRegions).map((region) => {
+		return {
+			value: region,
+			label: t(`regions.${region}`),
+		};
+	});
+});
 
 const kpiCards = reactive([
 	{ title: 'Total sales', value: 42 },
