@@ -27,6 +27,12 @@ module.exports = {
           textAlign: 'center',
         },
       });
+
+      addUtilities({
+        '.chart-wrapper': {
+          '@apply bg-white p-6 rounded-3xl shadow-md shadow-gray-900/5': {},
+        },
+      }, ['responsive']);
     },
   ],
 };
