@@ -12,20 +12,18 @@
 import { defineProps, defineEmits, watch, defineModel } from 'vue';
 
 const props = defineProps({
-  options: {
-    type: Array,
-    required: true,
-  },
+	options: {
+		type: Array,
+		required: true,
+	},
 });
 
 const model = defineModel();
 const emit = defineEmits(['update:modelValue']);
 
 watch(model, (newValue) => {
-  emit('update:modelValue', newValue);
+	emit('update:modelValue', newValue);
 });
-
-
 </script>
 
 <style>
